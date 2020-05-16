@@ -26,7 +26,7 @@ async function main() {
   await token.deployed()
 
 
-  console.log('name:', await token.help())
+  console.log('name:', await token.name())
 
   // We also save the contract's artifacts and address in the frontend directory
   saveFrontendFiles(token);
