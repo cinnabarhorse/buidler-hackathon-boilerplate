@@ -5,4 +5,9 @@ usePlugin("@nomiclabs/buidler-waffle");
 // testing the frontend.
 require("./tasks/faucet");
 
-module.exports = {};
+module.exports = {
+    solc: {
+        version: "0.6.2"
+    }
+
+};

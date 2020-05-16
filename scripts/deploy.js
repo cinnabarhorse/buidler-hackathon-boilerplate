@@ -3,11 +3,12 @@
 async function main() {
   // This is just a convenience check
   if (network.name === "buidlerevm") {
-    console.warn(
-      "You are trying to deploy a contract to the Buidler EVM network, which" +
+    /*  console.warn(
+        "You are trying to deploy a contract to the Buidler EVM network, which" +
         "gets automatically created and destroyed every time. Use the Buidler" +
         " option '--network localhost'"
-    );
+      );
+      */
   }
 
   // ethers is avaialble in the global scope
@@ -19,11 +20,13 @@ async function main() {
 
   console.log("Account balance:", (await deployer.getBalance()).toString());
 
-  const Token = await ethers.getContractFactory("Token");
-  const token = await Token.deploy();
-  await token.deployed();
 
-  console.log("Token address:", token.address);
+  const Token = await ethers.getContractFactory("Token");
+  const token = await Token.deploy("My Contract", "MYC", 1000000);
+  await token.deployed()
+
+
+  console.log('name:', await token.help())
 
   // We also save the contract's artifacts and address in the frontend directory
   saveFrontendFiles(token);
